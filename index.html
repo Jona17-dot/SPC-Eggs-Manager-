@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPC Egg Manager</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#27ae60">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-container">
+    <h2>SPC Egg Manager</h2>
+    <input type="password" id="passwordInput" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- APP CONTENT -->
+<div id="appContent" style="display:none;">
+
+    <!-- HEADER -->
+    <header>
+        <img src="logo.png" class="logo">
+        <div>
+            <h1>SPC CHICKEN FARM</h1>
+            <p>"We Aim At Quality Egg Distribution."</p>
+        </div>
+        <button id="logoutBtn" onclick="logout()">Logout</button>
+    </header>
+    <button onclick="saveAppData()">💾 Save All Data</button>
+    
+    <!-- CHANGE PASSWORD MODAL -->
+<div id="changePasswordModal" class="modal">
+    <h3>Change Password</h3>
+    <input type="password" id="oldPassword" placeholder="Current Password">
+    <input type="password" id="newPassword" placeholder="New Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm New Password">
+    <button onclick="changePassword()">Save</button>
+    <button onclick="closeChangePassword()">Cancel</button>
+</div>
+
+    <!-- NAV -->
+    <nav>
+        <button onclick="showScreen('harvest')">Harvests</button>
+        <button onclick="showScreen('sales')">Sales</button>
+        <button onclick="showScreen('dashboard')">Available Eggs</button>
+    </nav>
+
+    <!-- HARVEST SCREEN -->
+    <section id="harvest" class="screen active">
+        <h2>Harvest Register</h2>
+        <table id="harvestTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Trays</th>
+                    <th>Damaged Eggs</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button onclick="addHarvestRow()">Add Row</button>
+    </section>
+
+    <!-- SALES SCREEN -->
+    <section id="sales" class="screen">
+        <h2>Sales Register</h2>
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Trays Sold</th>
+                    <th>Consumer</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button onclick="addSalesRow()">Add Row</button>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="screen">
+        <h2>Stock Summary</h2>
+        <div class="card green">
+            <h3>Available Trays</h3>
+            <p id="availableTrays">0</p>
+        </div>
+        <div class="card red">
+            <h3>Total Damaged Eggs</h3>
+            <p id="damagedTotal">0</p>
+        </div>
+        <div class="card blue">
+            <h3>Total Harvested</h3>
+            <p id="harvestTotal">0</p>
+        </div>
+        <div class="card orange">
+            <h3>Total Sold</h3>
+            <p id="soldTotal">0</p>
+        </div>
+    </section>
+
+</div>
+
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js')
+  .then(()=>console.log('Service Worker Registered'))
+  .catch(err=>console.log('SW Error:', err));
+}
+</script>
+</body>
+</html>

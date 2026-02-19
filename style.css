@@ -1,0 +1,317 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #F5E6C8;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background: #4A2C1D;
+    color: #D4AF37;
+    padding: 10px;
+}
+
+.logo {
+    width: 60px;
+    margin-right: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background: #2E6F3E;
+}
+
+nav button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #2E6F3E;
+    color: white;
+    font-weight: bold;
+}
+
+nav button:hover {
+    background: #D4AF37;
+    color: black;
+}
+
+.screen {
+    display: none;
+    padding: 15px;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ===== TABLE CLEAN MOBILE DESIGN ===== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+th {
+    background: #D4AF37;
+    color: #000;
+    padding: 8px 4px;
+    font-size: 13px;
+}
+
+td {
+    padding: 4px;
+    border: 1px solid #ddd;
+}
+
+td input {
+    width: 100%;
+    padding: 5px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Column widths (Harvest Table) */
+
+#harvestTable th:nth-child(1),
+#harvestTable td:nth-child(1) {
+    width: 25%;
+}
+
+#harvestTable th:nth-child(2),
+#harvestTable td:nth-child(2) {
+    width: 25%;
+}
+
+#harvestTable th:nth-child(3),
+#harvestTable td:nth-child(3) {
+    width: 30%;
+}
+
+#harvestTable th:nth-child(4),
+#harvestTable td:nth-child(4) {
+    width: 20%;
+}
+
+/* Delete Button Style */
+
+td button {
+    width: 100%;
+    background: #4A2C1D;
+    color: white;
+    border: none;
+    padding: 6px 0;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #D4AF37;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #4A2C1D;
+    color: white;
+    border: none;
+}
+
+.card {
+    margin: 15px 0;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.green { background: #2E6F3E; }
+.red { background: #B22222; }
+.blue { background: #1E90FF; }
+.orange { background: #FF8C00; }
+
+/* Mobile Optimized Tables */
+
+table {
+    table-layout: fixed;
+}
+
+#salesTable th,
+#salesTable td {
+    padding: 4px;
+    font-size: 13px;
+}
+
+#salesTable th:nth-child(1),
+#salesTable td:nth-child(1) {
+    width: 25%;
+}
+
+#salesTable th:nth-child(2),
+#salesTable td:nth-child(2) {
+    width: 25%;
+}
+
+#salesTable th:nth-child(3),
+#salesTable td:nth-child(3) {
+    width: 35%;
+}
+
+#salesTable th:nth-child(4),
+#salesTable td:nth-child(4) {
+    width: 15%;
+}
+
+#salesTable input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+    padding: 3px;
+}
+
+button {
+    font-size: 12px;
+    padding: 5px;
+}
+
+/* ===== LOGIN SCREEN ===== */
+.login-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 400px;
+    background: #4A2C1D;
+    color: #D4AF37;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.login-container input {
+    padding: 12px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.login-container button {
+    padding: 12px 20px;
+    background: #2E6F3E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-container button:hover {
+    background: #246433;
+}
+
+.login-container input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+}
+
+.login-container button {
+    padding: 10px 20px;
+    background: #2E6F3E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* ===== LOGOUT BUTTON STYLING ===== */
+#logoutBtn {
+    background: #2E6F3E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#logoutBtn:hover {
+    background: #246433;
+}
+
+/* ===== CHANGE PASSWORD MODAL ===== */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #4A2C1D;
+    color: #D4AF37;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal input {
+    margin: 8px 0;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+}
+
+.modal button {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    background: #2E6F3E;
+    color: white;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background: #246433;
+}
