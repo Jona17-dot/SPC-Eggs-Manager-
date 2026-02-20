@@ -1,15 +1,15 @@
-const CACHE_NAME = 'spc-egg-cache-v2';
+const CACHE_NAME = 'spc-egg-cache-v4';
 
 const ASSETS = [
-  './',
   './index.html',
   './style.css',
   './app.js',
   './db.js',
-  './logo.png'
+  './logo.png',
+  './manifest.json'
 ];
 
-// Install - Cache Everything
+// ================= INSTALL =================
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -18,44 +18,55 @@ self.addEventListener('install', event => {
   );
 });
 
-// Activate - Remove Old Caches
+// ================= ACTIVATE =================
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(
-        keys.filter(key => key !== CACHE_NAME)
-            .map(key => caches.delete(key))
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
       );
     })
   );
   self.clients.claim();
 });
 
-// Fetch - Offline First Strategy
+// ================= FETCH =================
 self.addEventListener('fetch', event => {
+
+  // Only handle GET requests
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
     caches.match(event.request)
       .then(cachedResponse => {
+
+        // If found in cache → return immediately
         if (cachedResponse) {
-          return cachedResponse; // Serve from cache
+          return cachedResponse;
         }
+
+        // Otherwise try network
         return fetch(event.request)
           .then(networkResponse => {
-            return networkResponse;
+
+            // Optional: cache new files dynamically
+            return caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, networkResponse.clone());
+              return networkResponse;
+            });
+
           })
           .catch(() => {
-            // Optional fallback
-            if (event.request.destination === 'document') {
+
+            // If navigation fails → serve index.html
+            if (event.request.mode === 'navigate') {
               return caches.match('./index.html');
             }
+
           });
+
       })
-  );
-});
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(response => {
-      return response || fetch(e.request);
-    })
   );
 });
